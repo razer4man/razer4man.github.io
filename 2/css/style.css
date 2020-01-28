@@ -1,0 +1,223 @@
+@font-face {
+  font-family: "ampir_deco";
+  src: url("../fonts/ampir_deco.ttf");
+}
+
+body {
+  background-color: #fafafa;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: 'ampir_deco';
+}
+
+strong {
+  font-family: 'ampir_deco';
+  color: rgba(153, 17, 17, 0.918);
+  font-weight: 800;
+  font-size: 1.5em;  
+}
+
+.fl {
+  font-family: 'ampir_deco';
+  font-size: 1.5em;
+  line-height: 1em !important;
+  /*color: rgba(153, 17, 17, 0.918);*/
+}
+
+a, a:hover, a:active, a:focus {
+  color: #212529;
+  text-decoration: underline;
+}
+
+p, li {
+  font-size: 1em;
+}
+
+header {
+  position: relative;
+  background-color: black;
+  /* height: 63vh; */
+  height: 77vh;
+  /* height: 100vh; */
+  min-height: 35rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    /* background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll; */
+    background: url('img/fin.png') black no-repeat center center scroll;    
+  }
+  header video {
+    display: none;
+  }
+}
+
+hr.divider {
+  width: 45%;
+	border-top: 1px solid #ffffff;
+}
+
+.el-divider {
+  margin-top: 0.9em;
+  border-top: 1px solid #1d1d1d;
+}
+
+.my-5 {
+  margin-bottom: 100px !important;
+  margin-top: 100px !important;
+}
+
+.my-first {
+  margin-top: 78px !important;
+}
+
+.p1 {
+  /* min-height: 600px;  */
+  min-height: 77vh; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/index/p1.jpg");
+}
+
+.p1_2 {
+  min-height: 77vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/index/p1_2.jpg");
+}
+
+.p2 {
+  min-height: 77vh;   
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/index/p2.jpg");
+}
+
+.p2_2 {
+  min-height: 77vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/index/p2_2.jpg");
+}
+
+.p3 {
+  min-height: 77vh;    
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/index/p3.jpg");
+}
+
+.p0-man {
+  /* min-height: 600px;  */
+  min-height: 77vh; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/maneuvers/m0.jpg");
+}
+
+.p1-man {
+  /* min-height: 600px;  */
+  min-height: 77vh; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/maneuvers/m1.jpg");
+}
+
+.p2-man {
+  min-height: 77vh;   
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/maneuvers/m2.jpg");
+}
+
+.p3-man {
+  min-height: 77vh;    
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+  background-image: url("../img/maneuvers/m3.jpg");
+}
+
+
+
+
+
+
+
+
+
+
+#navbar {
+  background-color: #333; /* Black background color */
+  position: fixed; /* Make it stick/fixed */
+  top: 0; /* Stay on top */
+  width: 100%; /* Full width */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  z-index: 4;
+}
+
+/* Style the navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
