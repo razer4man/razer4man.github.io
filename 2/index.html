@@ -31,23 +31,24 @@
 </head>
 
 <body>
+  <div id="navbar">
+    <ul class="nav justify-content-center navbar-menu">
+      <li class="nav-item">
+        <a class="nav-link" href="#top"><span class="fl">Г</span>лавная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="maneuvers.html"><span class="fl">М</span>айские маневры</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact"><span class="fl">К</span>онтакты</a>
+      </li>
+    </ul>
+  </div>
 
-<div id="navbar">
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">Главная</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="maneuvers.html">Майские маневры</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="maneuvers.html">Контакты</a>
-    </li>
-  </ul>
-</div>
 
-<header>
-    <div class="overlay"></div>
+
+  <header>
+    <div class="overlay" id="top"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="video/fin1_2.mp4" type="video/mp4">
     </video>
@@ -74,7 +75,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="row">
               <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <img src="img/index/bird.png" class="float-left img-fluid">
+                <img src="img/index/bird.png" class="float-left img-fluid" alt="">
               </div>
               <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <p>
@@ -268,7 +269,7 @@
 
   <div class="p3"></div>
 
-  <section class="my-5">
+  <section class="my-5" id="contact">
     <div class="container">
       <div class="col-md-8 mx-auto">
         <h2 class="text-center mb-5"><strong>К</strong>АК НАС НАЙТИ</h2>
@@ -314,23 +315,11 @@
     </div>
   </footer>
 
+
+
+
+
   <script>
-    var prevScrollpos = window.pageYOffset;
-
-    window.onscroll = function() {
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-      } else {
-        document.getElementById("navbar").style.top = "-50px";
-      }
-      prevScrollpos = currentScrollPos;
-    }
-
-
-
-
-
     // window.onscroll = function() {scrollFunction()};
     //
     // function scrollFunction() {
@@ -340,7 +329,17 @@
     //     document.getElementById("navbar").style.top = "-50px";
     //   }
     // }
-  </script>
 
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos || document.body.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-60px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  </script>
 </body>
 </html> 

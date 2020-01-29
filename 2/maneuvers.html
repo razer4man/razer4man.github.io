@@ -26,23 +26,22 @@
 </head>
 
 <body>
-  <div id="myNav" class="overlay">
-    <span onclick="closeNav()" class="closebtn">&times;</span>
-    <div class="overlay-content">
-      <img class="img-fluid" src="img/m.png">
-      <br>
-      <br>
-      <a href="index.html"><strong>ГЛАВНАЯ</strong></a>
-      <a href="about.html"><strong>ПРО ЭПОХУ</strong></a>
-      <a href="maneuvers.html"><strong>майские<br>МАНЕВРЫ</strong></a>
-    </div>
-  </div>
-  <div id="mySidenav" class="sidenav">
-    <span id="blog" onclick="openNav()" class="text-right">&#9776;</span>
+  <div id="navbar">
+    <ul class="nav justify-content-center navbar-menu">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html"><span class="fl">Г</span>лавная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#top"><span class="fl">М</span>айские маневры</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact"><span class="fl">К</span>онтакты</a>
+      </li>
+    </ul>
   </div>
 
   <header>
-    <div class="overlay p0-man"></div>
+    <div class="overlay p0-man" id="top"></div>
     <div class="container h-100">
       <div class="d-flex h-100 text-center align-items-center">
         <div class="w-100 text-white">
@@ -247,7 +246,7 @@
 
   <div class="p3-man"></div>
 
-  <section class="my-5">
+  <section class="my-5" id="contact">
     <div class="container">
       <div class="col-md-8 mx-auto">
         <h2 class="text-center mb-5"><strong>Г</strong>ДЕ ЭТО БУДЕТ</h2>
@@ -302,13 +301,29 @@
     </div>
   </footer>
 
+
+
   <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
+    // window.onscroll = function() {scrollFunction()};
+    //
+    // function scrollFunction() {
+    //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    //     document.getElementById("navbar").style.top = "0";
+    //   } else {
+    //     document.getElementById("navbar").style.top = "-50px";
+    //   }
+    // }
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos || document.body.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-60px";
+      }
+      prevScrollpos = currentScrollPos;
     }
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    } 
   </script>
 </body>
 </html> 
