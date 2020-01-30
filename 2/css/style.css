@@ -25,6 +25,12 @@ strong {
   /*color: rgba(153, 17, 17, 0.918);*/
 }
 
+.fl-menu {
+  font-family: 'ampir_deco';
+  font-size: 1.5em;
+  line-height: 1em !important;
+}
+
 a, a:hover, a:active, a:focus {
   color: #212529;
   text-decoration: underline;
@@ -234,30 +240,6 @@ hr.divider {
   color: white;
   border-bottom: 1px whitesmoke solid;
 }
-
-
-
-
-
-
-
-
-
-
-/*Google map */
-/*iframe {*/
-/*  z-index: -1;*/
-/*  opacity: 0.5;*/
-/*}*/
-
-/*.google-map-overlay {*/
-/*  background: red;*/
-/*  opacity: 0.7;!*add this*!*/
-/*  top: 0px;*/
-/*  left: 0px;*/
-/*  z-index: 5;*/
-/*}*/
-
 
 .map-wrapper {
   /*display: block;*/
