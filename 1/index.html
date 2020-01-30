@@ -31,22 +31,33 @@
 </head>
 
 <body>
+
+<div id="navbar">
   <div id="myNav" class="overlay">
-    <span onclick="closeNav()" class="closebtn">&times;</span>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
-      <img class="img-fluid" src="img/m.png">
-      <br>
-      <br>
-      <a href="index.html"><strong>ГЛАВНАЯ</strong></a>
-      <a href="about.html"><strong>ПРО ЭПОХУ</strong></a>
-      <a href="maneuvers.html"><strong>майские<br>МАНЕВРЫ</strong></a>
+      <img src="img/m.png" alt="bird">
+      <a href="index.html"><span class="fl-menu">Г</span>лавная</a>
+      <a href="maneuvers.html"><span class="fl-menu">М</span>айские маневры</a>
+      <p class="con-menu">
+        <br>
+        <small>
+          <small>
+            +375-29-629-39-60<br>
+            Минск, ул. Уральская 41<br>
+          </small>
+        </small>
+      </p>
+      <a href="https://vk.com/sword_and_raven" target="_blank"><img src="img/social/vk3.png" alt=""></a>
+      <a href="https://www.instagram.com/schwert_und_rabe/" target="_blank"><img src="img/social/ins3.png" alt=""></a>
+      <a href="https://www.facebook.com/swordandraven" target="_blank"><img src="img/social/fb3.png" alt=""></a>
     </div>
   </div>
-  <div id="mySidenav" class="sidenav">
-    <span id="blog" onclick="openNav()" class="text-right">&#9776;</span>
-  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
 
-  <header>
+
+<header>
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="video/fin1_2.mp4" type="video/mp4">
@@ -322,13 +333,28 @@
     </div>
   </footer>
 
+  <!--  Slide down top navbar for sandvich -->
+  <script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "48px";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+  </script>
+
+  <!-- Overlay slide-down menu -->
   <script>
     function openNav() {
-      document.getElementById("myNav").style.width = "100%";
+      document.getElementById("myNav").style.height = "100%";
     }
+
     function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    } 
+      document.getElementById("myNav").style.height = "0%";
+    }
   </script>
 
 </body>
