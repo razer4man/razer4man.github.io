@@ -163,7 +163,7 @@ hr.divider {
 
 .p1-man {
   /* min-height: 600px;  */
-  min-height: 77vh; 
+  min-height: 77vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -172,20 +172,20 @@ hr.divider {
 }
 
 .p2-man {
-  min-height: 77vh;   
+  min-height: 77vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;    
+  background-size: cover;
   background-image: url("../img/maneuvers/m2.jpg");
 }
 
 .p3-man {
-  min-height: 77vh;    
+  min-height: 77vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;    
+  background-size: cover;
   background-image: url("../img/maneuvers/m3.jpg");
 }
 
@@ -194,34 +194,97 @@ hr.divider {
 
 
 
+
+
+
+
+
+
 #navbar {
-  /* background-color: #333; */  /* Black background color; */
-  background-color: #343a40 !important;   /* Black background color; */
+   /*background-color: #333;*/
+  /*background-color: #343a40;*/
+  background-color: #5c5c5c;
   position: fixed; /* Make it stick/fixed */
-  top: -50px; /* Stay on top */
+  top: -120px; /* Stay on top */
   width: 100%; /* Full width */
   transition: top 0.3s; /* Transition effect when sliding down (and up) */
   z-index: 4;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: bolder;
+  opacity: 0.96;
 }
 
 /* Style the navbar links */
 #navbar a {
   float: left;
   display: block;
-  color: white;
+  color: whitesmoke;
   text-align: center;
-  padding: 15px;
+  padding-top: 15px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 10px;
   text-decoration: none;
+  border-bottom: 1px solid #2a3264;
 }
 
 #navbar a:hover {
-  /*background-color: #ddd;*/
-  /*color: black;*/
-  text-decoration: underline;
+  /*background-color: #2e3c78;*/
+  background-color: #494949;
+  color: white;
+  border-bottom: 1px whitesmoke solid;
 }
 
 
 
 
 
+
+
+
+
+
+/*Google map */
+/*iframe {*/
+/*  z-index: -1;*/
+/*  opacity: 0.5;*/
+/*}*/
+
+/*.google-map-overlay {*/
+/*  background: red;*/
+/*  opacity: 0.7;!*add this*!*/
+/*  top: 0px;*/
+/*  left: 0px;*/
+/*  z-index: 5;*/
+/*}*/
+
+
+.map-wrapper {
+  /*display: block;*/
+  /*position: absolute;*/
+  /*width: 100%;*/
+}
+
+#googlemaps {
+  height: 40vh;
+  width: 100%;
+  position: absolute;
+  /*top: 0;*/
+  /*left: 0;*/
+  z-index: 0;
+}
+
+#contactform {
+  display: block;
+  float: right;
+  /*position: relative;*/
+  position: relative;
+  z-index: 1; /* The z-index should be higher than Google Maps */
+  width: 20%;
+  height: 400px !important;
+  margin: -406px 10% 0 0;
+  padding: 30px;
+  background: black;
+  opacity: .70; /* Set the opacity for a slightly transparent Google Form */
+  color: white;
+}
