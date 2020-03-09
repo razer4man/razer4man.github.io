@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Cormorant|Montserrat+Alternates&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOB finance app</title>
+    <style>
+        .mainNoteBtnChecked {
+            background-color: white;
+            color: #2c3e50;
+            border: solid 2px #2c3e50;
+            cursor: pointer;
+        }
+        .statisticCathegories {
+            width: 300px;
+            height: 45px;
+            color: white;
+            background-color: #2c3e50;
+            font-size: 15px;
+            padding: 5px;
+            text-align: center;
+            outline: none;
+        }
+        .yearSelector{
+            width: 100px;
+        }
+        .canvas_block{
+            width: 700px;
+            height: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <script src = 'menu.js'></script>
+<!--    <script src = 'form.js'></script>-->
+    <div id="content">
+        <div id="user_para">
+        </div>
+        <form class="container" id='registrationForm'>
+            <input type="radio" name="tab" id="signin" checked="checked" />
+            <input type="radio" name="tab" id="register" />
+            <div class="tabs">
+                <label class="tab" for="signin">
+                    <div class="text">Вход</div>
+                </label>
+                <label class="tab" for="register">
+                    <div class="text">Реристрация</div>
+                </label>
+            </div>
+            <div class="pages">
+                <div class="page">
+<!--                    <div class="input">-->
+<!--                        <div class="title">Электронная почта</div>-->
+<!--                        <input class="text" type="email" id="email_field">-->
+<!--                    </div>-->
+<!--                    <div class="input">-->
+<!--                        <div class="title">Пароль</div>-->
+<!--                        <input class="text" type="password" id="password_field">-->
+<!--                    </div>-->
+<!--                    <div class="input">-->
+<!--                        <input type="submit" value="Вход" onclick="login()">-->
+<!--                    </div>-->
+
+                    <div class="input">
+                        <input type="email" class="text" placeholder="Email..." id="email_field">
+                    </div>
+                    <div class="input">
+                        <input type="password" class="text" placeholder="Password..." id="password_field">
+                    </div>
+                    <div class="input">
+                        <button onclick="login()">Login to Account</button>
+                    </div>
+                </div>
+                <div class="page signup">
+                    <div class="input">
+                        <div class="title">Имя пользователя</div>
+                        <input class="text" type="text" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <div class="title">Электронная почта</div>
+                        <input class="text" type="password" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <div class="title">Пароль</div>
+                        <input class="text" type="password" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Регистрация" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTX3kDc3s786L-twUxZ-YwlAbFnEbXic8",
+            authDomain: "d-finance-97648.firebaseapp.com",
+            databaseURL: "https://d-finance-97648.firebaseio.com",
+            projectId: "d-finance-97648",
+            storageBucket: "d-finance-97648.appspot.com",
+            messagingSenderId: "1081816026519",
+            appId: "1:1081816026519:web:b4a59d0d3e84e45049c8d2",
+            measurementId: "G-RREZF9T7NZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -18,7 +18,7 @@ mainMenu.outerHTML = `
         <!--<a class='littleLi' id ='enterBtn' href="#">Вход</a>-->
         <!--<a class ='littleLi right' id ='registrationBtn' href="#">Регистрация</a>-->
         <ul class="menu" id="mainmenu">
-            <li id="menu-elem-3" class="right"><a href="#">Выход</a></li>
+            <li id="menu-elem-3" class="right"><a href="#" onclick="logout()">Выход</a></li>
         </ul>
     </div>
 </div>`;
