@@ -10,16 +10,17 @@ document.body.append(mainMenu);
 mainMenu.outerHTML = `
 <div class='menu-wrapper' id='mainmenuWrapper'>
     <ul class="menu" id="mainmenu">
-    <li><a href="#main" class="active">Главная</a></li>
-    <li><a href="#about">Платежи и доходы</a></li>
-    <li><a href="#contacts">Cтатистика</a></li>
-    <li class="slider"></li>
-</ul>
-<div class="enterDiv">
-<a class='littleLi' id ='enterBtn' href="#">Вход</a>
-<a class ='littleLi right' id ='registrationBtn' href="#">Регистрация</a>
-</div>
-</div>
+        <li><a href="#main" class="active">Главная</a></li>
+        <li id="menu-elem-1"><a href="#about">Платежи и доходы</a></li>
+        <li id="menu-elem-2"><a href="#contacts">Cтатистика</a></li>
+    </ul>
+    <div class="enterDiv">
+        <!--<a class='littleLi' id ='enterBtn' href="#">Вход</a>-->
+        <!--<a class ='littleLi right' id ='registrationBtn' href="#">Регистрация</a>-->
+        <ul class="menu" id="mainmenu">
+            <li id="menu-elem-3" class="right"><a href="#">Выход</a></li>
+        </ul>
+    </div>
 </div>`;
 let registrationFormContainer = new CreateFluidContainer ();
 document.body.append(registrationFormContainer);
@@ -28,7 +29,7 @@ function createRegistrationForm () {
         <div class="pages">
             <div class="page">
                 <div class="input">
-                    <div class="title"> USERNAME</div><input class="text" type="text" placeholder="" /></div>
+                    <div class="title">USERNAME</div><input class="text" type="text" placeholder="" /></div>
                 <div class="input">
                     <div class="title">PASSWORD</div><input class="text" type="password" placeholder="" /></div>
                 <div class="input"><input type="submit" value="ENTER" /></div>

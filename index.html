@@ -8,510 +8,106 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BOB finance app</title>
-<style>
-    .mainNoteBtnChecked {
-    background-color: white;
-    color: #2c3e50;
-    border: solid 2px #2c3e50;
-    cursor: pointer;
-}
-.statisticCathegories {
-    width: 300px;
-    height: 45px;
-    color: white;
-    background-color: #2c3e50;
-    font-size: 15px;
-    padding: 5px;
-    text-align: center;
-    outline: none;
-}
-.yearSelector{
-    width: 100px;
-}
-.canvas_block{
+    <style>
+        .mainNoteBtnChecked {
+            background-color: white;
+            color: #2c3e50;
+            border: solid 2px #2c3e50;
+            cursor: pointer;
+        }
+        .statisticCathegories {
+            width: 300px;
+            height: 45px;
+            color: white;
+            background-color: #2c3e50;
+            font-size: 15px;
+            padding: 5px;
+            text-align: center;
+            outline: none;
+        }
+        .yearSelector{
+            width: 100px;
+        }
+        .canvas_block{
             width: 700px;
             height: 300px;
             margin: auto;
         }
-</style>
+    </style>
 </head>
 <body>
-<script src = 'menu.js'> </script>
-<script src = 'form.js'> </script>
-<div id="content">
-</div>
-<script>
-    let sourcesPage = new CreateFluidContainer ();
-    sourcesPage.innerHTML = `<div class = 'modal-overlay hidden' id ='modalOverlay2'> </div> <img class = 'sourcesImg' src='money.png'></img> <div id = 'sourcesList', class = 'sourcesList'></div>`;
-    sourcesPage.innerHTML += `<div class = 'buttonsBlock'> <div class='sourceBtnBlock'> <div class ='mainNoteBtn sourcePageBtn' id = 'createNewSourceBtn'> <p>Новый источник</p></div> </div></div>`;
-    let sourceForm = document.createElement('form');
-    document.body.appendChild(sourceForm);
-    sourceForm.outerHTML = ` <form id="addSourceForm" class="addPaymentNotehForm sourceForm">
-  <div> <label>Название</label><div><input id="sourceName"></div></div>
-  <div> <label>Начальный остаток</label><div><input id="sourceBalance"></div></div>
-  <div><label>Тип источника</label><div><select id="sourceType"><option value="Card">Карта</option><option value="Cash">Наличные</option><option value="Deposit">Депозит</option></select></div>
-  <button class="savePaymentButton sourcePageBtn" id="saveSourceButton">Сохранить</button></form>  <button class="savePaymentButton sourcePageBtn" id="cancelSourceButton" data-action= 'cancel'>Отмена</button></form>`;
-        // контроллер третьей страницы
-    let addSourceBtn = document.getElementById('createNewSourceBtn');
-    let modalOverlay = document.getElementById('modalOverlay2');
-    addSourceBtn.addEventListener('click', showSourceForm); 
-    let sourceform = document.getElementById('addSourceForm');
-    function showSourceForm () {
-        sourceform.style.display = 'block';
-        modalOverlay.style.display = 'block';
-    }
-    modalOverlay.addEventListener('click', hideSourceForm) 
-    function hideSourceForm () {
-        modalOverlay.style.display = 'none';
-        sourceform.style.display = 'none';
-    }
-    let cancelSourceBtn = document.getElementById('cancelSourceButton');
-    cancelSourceBtn.addEventListener('click', hideSourceForm);
-    let saveSourceButton = document.getElementById('saveSourceButton');
-    counter_4  = counter();
-    function SourceObj (_id, _name, _sum) {
-    this.id =_id
-    this.name = _name;
-    this.balance = _sum;
-    this.user = 'user';
-    }
-    saveSourceButton.addEventListener('click', saveSource);
-    function saveSource () {
-        let sourceName = document.getElementById('sourceName').value;
-        let sourceBalance = document.getElementById('sourceBalance').value;
-        let sourceType = document.getElementById('sourceType').value;
-        sourceId = `${sourceType}${counter_4()}`;
-        let newSource = new SourceObj (sourceId, sourceName, sourceBalance);
-        sourceStorage.addValue(sourceId, newSource);
-        sourceItem(newSource);
-        hideSourceForm();
-        updateSourceList();
-        updateSelectors(sourceName, sourceId);
-        clearForm();
-    }
-    let sourceList = document.getElementById('sourcesList');
+    <script src = 'menu.js'> </script>
+    <script src = 'form.js'> </script>
+    <div id="content">
+        <form class="container" id='registrationForm'>
+            <input type="radio" name="tab" id="signin" checked="checked" />
+            <input type="radio" name="tab" id="register" />
+            <div class="tabs">
+                <label class="tab" for="signin">
+                    <div class="text">Вход</div>
+                </label>
+                <label class="tab" for="register">
+                    <div class="text">Реристрация</div>
+                </label>
+            </div>
+            <div class="pages">
+                <div class="page">
+                    <div class="input">
+                        <div class="title">Электронная почта</div>
+                        <input class="text" type="email" id="email_field">
+                    </div>
+                    <div class="input">
+                        <div class="title">Пароль</div>
+                        <input class="text" type="password" id="password_field">
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Вход" onclick="login()">
+                    </div>
 
-    function sourceItem (_sourceObj) {
-    this.sourceObj = _sourceObj;
-    let item = document.createElement('div');
-    item.classList.add('sourceItem');
-    item.setAttribute('id', `${sourceObj.id}`)
-    sourcesList.prepend(item);
-    item.innerHTML = `<h2> ${sourceObj.name} </h2>  <div class = sourceItemSum> <p> ${sourceObj.balance} </p> </div>`;
-    }
-    
-    function hideSourceForm () {
-        sourceform.style.display = 'none';
-        modalOverlay.style.display = 'none';
-    }
+<!--                    <input type="email" placeholder="Email..." id="email_field" />-->
+<!--                    <input type="password" placeholder="Password..." id="password_field" />-->
 
-    function updateSourceList () {
-        let children = sourceList.children;
-        if (children.length > 3) {
-            sourceList.lastChild.remove();
-        }
-    }
+<!--                    <button onclick="login()" style="display: block;">Login to Account</button>-->
+                </div>
+                <div class="page signup">
+                    <div class="input">
+                        <div class="title">Имя пользователя</div>
+                        <input class="text" type="text" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <div class="title">Электронная почта</div>
+                        <input class="text" type="password" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <div class="title">Пароль</div>
+                        <input class="text" type="password" placeholder="" />
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Регистрация" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-    function updateSelectors (option, value) {
-        let paymentSelector = document.getElementById('source');
-        let incomeSelector = document.getElementById('iSource');
-        let newOption = new Option(`${option}`, `${value}`);
-        let newOption2 = new Option(`${option}`, `${value}`);
-        incomeSelector.append(newOption);
-        paymentSelector.append(newOption2);
-        
-    }
 
-</script>
-<script>
-     const container_2 = document.createElement('div');
-     container_2.classList.add('flexRowContainer');
-    document.body.append(container_2);
-    container_2.innerHTML = `<div id='wrapper' class = 'wrapper'> <div class='mainNoteBtnBlock'> <button class ='mainNoteBtn mainNoteBtnChecked' id = 'paymentFormChecked'><p>Новый платеж</p></button> <button class ='mainNoteBtn' id = 'incomeFormChecked'><p>Новое поступление </p></button> </div> </div>
-    <div id = 'paymentHistoryBlock' class = 'noteBlock'> </div>`
-    let wrapper = document.getElementById('wrapper');
-    // Форма платежа
-    let addPaymentForm = document.createElement('form');
-    wrapper.append(addPaymentForm);
-    addPaymentForm.outerHTML =` <form id="addPaymentForm" class="addPaymentNotehForm">
-    <div><label>Категория</label><div>
-    <select id="paymentCathegory"><option value="goods">Продукты</option><option value="services">Коммунальные услуги</option><option value="debts">Кредиты</option>
-    <option value="medicine">Медицина</option><option value="gifts">Подарки</option><option value="cloth">Одежда</option><option value="travel">Путешестия</option>
-    <option value="entertainments">Рвзвлечения</option><option value="transport">Транспорт</option><option value="others">Другое</option></select></div></div><div>
-    <label>Дата платежа</label><div><input id="paymentDate" type="date"></div></div><div><label>Наименование платежа</label><div><input id="paymentName">
-    </div></div><div><label>Сумма</label><div><input id="paymentSum"></div></div><div><label>Оплачено из</label><div><select id="source"><option value="Card">
-    Карта</option><option value="Cash">Наличные</option><option value="Deposit">Депозит</option></select></div></div><div><label>Детали платежа</label><div>
-    <textarea id="paymentDetails"></textarea></div></div><button class="savePaymentButton" id="savePaymentButton">Сохранить</button></form>`;
-    let incomeForm = document.createElement('form');
-    wrapper.append(incomeForm)
-    incomeForm.outerHTML = `<form id="addIncomeForm" class="addPaymentNotehForm secondForm"><div><label>Поступление на</label><div><select id="iSource"><option value="Card">Карта</option><option value="Cash">Наличные</option><option value="Deposit">Депозит</option></select></div></div><div><label>Дата</label><div><input id="iDate" type="date"></div></div><div><label>Сумма</label><div><input id="iSum"></div></div><div><label>Источник</label><div><select id="iName"><option value="salary">Зарплата</option><option value="savings">Сбережения</option><option value="others">Другое</option><option value="passive income">Депозит</option></select></div></div><div><label>Описание</label><div><textarea id="iDetails"></textarea></div></div><button class="savePaymentButton" id="saveIncomeButton">Сохранить</button></form>`
-    createRegistrationForm ();
-</script>
-<script>
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function HashStorage() {
-    this.storage = {};
-};
-HashStorage.prototype.addValue = function (userKey, value) {
-    this.storage[userKey] = value;
-}
-HashStorage.prototype.getValue = function (key) {
-   return this.storage[key];
-}
-HashStorage.prototype.deleteValue = function (key) {
-    delete this.storage[key];
-}
-let paymentsStorage = new HashStorage ();
-let cathegoryStorage = new HashStorage ();
-let incomeStorage = new HashStorage ();
-let sourceStorage = new HashStorage ();
-let savePaymentButton = document.getElementById('savePaymentButton');
-let counter2 = counter();
-//это функция контроллера
-function getPaymentNoteData () {
-    event.preventDefault();
-    let cathegory = document.getElementById('paymentCathegory').value;
-    let paymentSource = document.getElementById('source').value;
-    let paymentDate = document.getElementById('paymentDate').value;
-    let paymentSum = +document.getElementById('paymentSum').value;
-    let paymentName = document.getElementById('paymentName').value;
-    let paymentDetails = document.getElementById('paymentDetails').value;
-    let paymentMonth = paymentDate.split('-')[1];
-    let paymentYear = paymentDate.split('-')[0];
-    paymentSum = parseFloat(paymentSum);
-    let paymentNameID = counter2(); 
-    // СЛЕДУЮЩИЕ ФУНКЦИИ НУЖНО БУДЕТ ПЕРЕНЕСТИ В МОДЕЛЬ
-    let paymentNote = new PaymentNoteObj(`payment${paymentNameID}`, cathegory, paymentDate, paymentName, paymentDetails, paymentSum, paymentSource, paymentMonth, paymentYear);
-    localStorage.setItem(`payment${paymentNameID}`, JSON.stringify(paymentNote));
-    let newNoteItem = new paymentNoteItem(paymentNote);
-    paymentsStorage.addValue(`payment${paymentNameID}`, paymentNote);
-    console.log(paymentsStorage);
-    }
-//это функция модели
-function PaymentNoteObj (_id, _cathegory, _date, _name, _details, _paymentSum, _paymentSource, _month, _year) {
-    this.id = _id;
-    this.type = 'payment';
-    this.cathegory = _cathegory;
-    this.date = _date;
-    this.name = _name;
-    this.details = _details;
-    this.sum = _paymentSum;
-    this.source =_paymentSource;
-    this.month = _month;
-    this.year = _year;
-}
-// Это функция вьюшки
-//Отдельная функция создающая узкие записи
-function paymentNoteItem(paymentNoteObject) {
-    this.paymentObject = paymentNoteObject;
-    this.name = paymentNoteObject.name;
-    this.sum = paymentNoteObject.sum;
-    this.cathegory = paymentNoteObject.cathegory
-    let icon;
-    for (let cath of cathegoryArr) {
-        if (cath.id == this.cathegory){
-        icon = cath.icon;
-        }
-    }
-    let historyBlock= document.getElementById('paymentHistoryBlock');
-    let newNote = document.createElement('div');
-    historyBlock.prepend(newNote);
-    newNote.classList.add('noteItem');
-    newNote.setAttribute('id', `${paymentNoteObject.id}`);
-    newNote.dataset.delete ='data-delete';
-    newNote.innerHTML = `<div class='deleteBtn'> <i class="fas fa-trash-alt"></i> </div> <i class=${icon}></i> 
-    <p class="noteDesc"> ${this.name} </p> <div class="noteSum">${this.sum}</div> `;
-    reduceSource(paymentNoteObject.source, paymentNoteObject.sum);
-    updateHistoryAmount('paymentHistoryBlock'); // функция вьюшки
-};
-function reduceSource (source, sum) {
-    sourceStorage.storage[source].balance -= sum;
-    let balance = sourceStorage.storage[source].balance;
-    reduceBalance(source, balance)
-}
-function reduceBalance (source, balance) {
-    let elem = document.getElementById(`${source}`);
-    let currentSum = elem.querySelector('.sourceItemSum > p');
-    currentSum.innerText = balance;
-    console.log('yes');
-}
-
-function updateHistoryAmount (historyBlockID) {
-    let historyBlock = document.getElementById(historyBlockID);
-    let children = historyBlock.children;
-    if (children.length > 6) {
-        historyBlock.lastChild.remove();
-    }
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////ДОХОДЫ/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////класс обьекта ЗАПИСИ дохода
-function incomeObject (_source, _date, _sum, _description, _name) { // функция модели
-    this.source = _source;
-    this.sum = _sum;
-    this.type = 'income';
-    this.date = _date;
-    this.description = _description;
-    this.name = _name;
-}
-//сбор дпнных и сохранение контроллек
-function saveIncomeNote () {
-    event.preventDefault ();
-    let source = document.getElementById('iSource').value;
-    let date = document.getElementById('iDate').value;
-    let sum = +document.getElementById('iSum').value;
-    let definision = document.getElementById('iDetails').value;
-    let name = document.getElementById('iName').value;
-    let incomeNoteObj = new incomeObject(source, date, sum, definision, name); // функция модели
-    let incomeNameID = counter_3();
-    localStorage.setItem(`income${incomeNameID}`, JSON.stringify(incomeNoteObj)); // функция модели
-    incomeStorage.addValue(`${source}${incomeNameID}`, incomeNoteObj);// функция модели
-    let newNoteItem = new incomeNoteItem(incomeNoteObj); // функция модели
-    updateSource(source, sum); // функция модели
-}
-function updateSource (source, sum) {
-    sourceStorage.storage[source].balance += sum;
-    let balance = sourceStorage.storage[source].balance;
-    updateBalance(source, balance); // функция вьюшки. по фйди апдейтить остаток
-}
-function updateBalance (source, balance) {
-    let elem = document.getElementById(`${source}`);
-    let currentSum = elem.querySelector('.sourceItemSum > p');
-    currentSum.innerText = balance;
-}
-let saveIncomeBtn = document.getElementById('saveIncomeButton');
-saveIncomeBtn.addEventListener('click', saveIncomeNote);
-saveIncomeBtn.addEventListener('click', clearForm);
-let counter_3 = counter();
-// создание записи о доходе
-function incomeNoteItem (incomeNoteObject) {
-    this.noteObj = incomeNoteObject;
-    let historyBlock = document.getElementById('paymentHistoryBlock');
-    this.sum = incomeNoteObject.sum;
-    this.cathegory = incomeNoteObject.name;
-    this.icon = null;
-    this.desc = null;
-    for (let cath of icathegoryArr) {
-        if (cath.id == this.cathegory){
-        icon = cath.icon;
-        desc = cath.name;
-        }
-    }
-    let newNote = document.createElement('div');
-    historyBlock.prepend(newNote);
-    newNote.classList.add('noteItem');
-    newNote.dataset.delete ='data-delete';
-    newNote.innerHTML = `<div class='deleteBtn'> <i class="fas fa-trash-alt"></i> </div> <i class=${icon}></i> <p class="noteDesc"> ${desc} </p> <div class="noteSum"> ${this.sum} </div></div>`
-    updateHistoryAmount('paymentHistoryBlock');
-}
-//Контроллер
-paymentForm = document.getElementById('addPaymentForm');
-incomeForm = document.getElementById('addIncomeForm');
-document.getElementById('paymentFormChecked').addEventListener('click', function () {
-    this.classList.add('mainNoteBtnChecked');
-    document.getElementById('incomeFormChecked').classList.remove('mainNoteBtnChecked');
-    paymentForm.style.display = 'block';
-    incomeForm.style.display = 'none';
-    });
-document.getElementById('incomeFormChecked').addEventListener('click', function () {
-    this.classList.add('mainNoteBtnChecked');
-    document.getElementById('paymentFormChecked').classList.remove('mainNoteBtnChecked');
-    paymentForm.style.display = 'none'
-    incomeForm.style.display = 'block'}); ////ПЕРЕДЕЛАААААТЬ ЧЕРЕЗ ДАТА-АТРИБУТЫ!!!!!!
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////// Создание карты или другого источника дохода /////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////Создание источников дохода чтобы висели ////////////////////////////////////////
-let card = new SourceObj ('Card', 'Карта ****4856',  5000);
-let cash = new SourceObj('Cash', 'Наличные',  3000);
-let deposit = new SourceObj('Deposit', 'Банковский счет', 7000);
-sourceStorage.addValue(`${card.id}`, card);
-sourceStorage.addValue(`${cash.id}`, cash);
-sourceStorage.addValue(`${deposit.id}`, deposit);
-sourceItem(card);
-sourceItem(cash);
-sourceItem(deposit);
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// функционал кнопки "Сохранить"
-/////////////////////////////////////////////    ПРОВЕРИТЬ ДО СЮДА ///////////////////////////////////////////////////////////////////////
-savePaymentButton.addEventListener('click', getPaymentNoteData);
-savePaymentButton.addEventListener('click', clearForm);
-document.addEventListener('mouseover', function(event) {
-        if (event.target.dataset.delete != undefined ||  event.target.closest('.deleteBtn') ||  event.target.closest('.noteItem')) { // если есть атрибут...
-            if (!(event.target.closest('.deleteBtn'))){
-            let elem = event.target.closest('.noteItem');
-            neCelem = elem.querySelector('.deleteBtn > i');
-            neCelem.style.display = 'block';
-            return;
-            }
-            event.target.style.display = 'block';
-            event.target.addEventListener('click', function (event){
-                this.closest(`div[data-delete]`).remove();
-            })
-        }
-    });
-document.addEventListener('mouseout', function(event) {
-    if (event.target.dataset.delete != undefined ) { // если есть атрибут...
-    let elem = event.target.querySelector('.deleteBtn>i');
-        elem.style.display = 'none';
-    }
-});
-// function checkPaymentDataForm () {
-//     let cathegory = document.getElementById('paymentCathegory').value;
-//     let paymentSource = document.getElementById('source').value;
-//     let paymentDate = document.getElementById('paymentDate').value;
-//     let paymentSum = +document.getElementById('paymentSum').value;
-//     let paymentName = document.getElementById('paymentName').value;
-//     let paymentDetails = document.getElementById('paymentDetails').value;
-//     paymentSum = parseFloat(paymentSum)
-//     if (!paymentSum){
-//         document.getElementById('paymentSum').value = '';
-//         document.getElementById('paymentSum').setAttribute('placeholder', 'введите сумму');
-//     }
-//     if (paymentDate && !isNaN(paymentSum) && paymentSum  && paymentName && paymentName.length > 2) {
-//         savePaymentButton.disabled = false;
-//     }
-//     else savePaymentButton.disabled = true;
-// } 
-
-// for (let elem of paymentForm.elements) {
-//     elem.addEventListener('blur', checkPaymentDataForm);
-// }
-function clearForm () {
-    let form = this.closest('form');
-    for (let elem of paymentForm.elements) {
-    elem.value = '';
-}
-}
-savePaymentButton.addEventListener('click', checkPaymentDataFormFields);
-function checkPaymentDataFormFields () {
-}
-window.onscroll = function() {myFunction()};
-var navbar = document.getElementById("mainmenuWrapper");
-var sticky = navbar.offsetTop;
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-let monthesArr = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-let monthSumArr = [];
-function countStatistic () {
-    let payStorage = paymentsStorage.storage;
-    for (let amonth of monthesArr){ 
-        let monthSum = 0;
-            for (let key in payStorage) {
-                if (payStorage[key]['month'] == amonth) {
-                    monthSum += payStorage[key][`sum`];
-                }
-                monthSumArr.push(monthSum);
-            }
-    }
-}
-countStatistic();
-let statisticCathegories = document.createElement('select');
-document.body.append(statisticCathegories);
-statisticCathegories.outerHTML = `<select id = 'cathegorySelector' class = 'statisticCathegories'> <option value="all"> Все категории </option> <option value="goods"> Продукты </option> <option value='services'> Коммунальные услуги </option> <option value='debts'> Кредиты </option> <option value='medicine'> Медицина </option> <option value='gifts'> Подарки </option> <option value='cloth'> Одежда </option> <option value='travel'> Путешестия </option> <option value='entertainments'> Рвзвлечения </option> <option value="transport"> Транспорт </option> <option value="others"> Дркгое </option> </select>
-`;
-
-let yearSelector = document.createElement('select');
-document.body.append(yearSelector);
-yearSelector.outerHTML = `<select id = 'yearSelector' class = 'statisticCathegories yearSelector'> <option value='2018'> 2018 </option> <option value='2019'> 2019 </option> <option value='2020'> 2020 </option> </select>`;
-</script>
-<div class ='canvas_block'>
-    <canvas id="myChart" ></canvas>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script> 
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
-    options: {}
-});
-</script>
-
-<script>
-//     paymentsYearArr;
-//    statisticObject {
-//        totalPayment: {
-//              year1: {
-// //                 '1': {
-//                         sum:
-// }
-//                 //  и так до 12
-//             }
-//        totalIncome: {
-//            year: {
-//                '1': '',
-//                '2': ''.
-//                 //  и так до 12
-//            }
-//        
-//    }
-//         this.nam = 
-//     }
-    //Статистика
-
-</script>
-<!-- 
-// function Source (type, sum, id, system) {
-//     if(type = 'card') {
-//         let newCard = new Card ()
-//     }
-// alert('done');
-// };
-
-// Создаем Картинка, Имя, описание
-// складываем и выводим все суммы
-// находим что за карта
-// Собирать в селектор все источники доходо -->
-
-<!-- // Список последних добавленных элементов
-
-// for (key in paymentsStorage) {
-//     if (key.cathegory == selectedCath) {
-//         sumPerDay += key.sum;
-//     }
-// } -->
-<!-- // let currencySelector = document.createElement('div')
-// currencySelector.innerHTML = '<select> <option> BYN </option> <option> USD </option> <option> EUR </option></select>' -->
-<!-- //     function downloadScript(src) {
-    //     var script = document.createElement('script');
-    //     script.src = `${src}`;
-    //     document.head.appendChild(script);
-    //     script.onload = function () {
-    //     alert(' // Скрипт был загружен');
-    //     };
-    // }
-    // scriptSrcArr = ['test.js', 'SVG.js'];
-    //     for (let item of scriptSrcArr) {
-    //         downloadScript(item);
-    //     } -->
-
-<!-- // function clearForm (form) {
-    //     let inputs = querySelector
-    //     console.log(form.children);
-    //     for (let input of inputs) {
-    //         if (input.hasAttribute('value')){
-    //             input.value = '';
-    //         }
-    //     }
-    // }; -->
-
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTX3kDc3s786L-twUxZ-YwlAbFnEbXic8",
+            authDomain: "d-finance-97648.firebaseapp.com",
+            databaseURL: "https://d-finance-97648.firebaseio.com",
+            projectId: "d-finance-97648",
+            storageBucket: "d-finance-97648.appspot.com",
+            messagingSenderId: "1081816026519",
+            appId: "1:1081816026519:web:b4a59d0d3e84e45049c8d2",
+            measurementId: "G-RREZF9T7NZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
 </body>
-
 </html>

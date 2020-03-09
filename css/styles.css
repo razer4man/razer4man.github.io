@@ -273,7 +273,8 @@
 	 min-width: 100%;
 	 padding: 20px 15px;
 	 padding-top: 0px;
-	 background: linear-gradient(to left, #24b400, #007510);
+	 /*background: linear-gradient(to left, #24b400, #007510);*/
+     background-color: #2c3e50;
 }
  .pages .page:nth-of-type(1) .input {
 	 transform: translateX(-100%) scale(0.5);
@@ -287,8 +288,10 @@
 	 transition-delay: 0s;
 }
  .pages .page.signup {
-	 background: linear-gradient(to left, #07c207, #018012);
-}
+	 /*background: linear-gradient(to left, #07c207, #018012);*/
+     background-color: #2c3e50;
+
+ }
  .pages .page .title {
 	 margin-bottom: 10px;
 	 font-size: 14px;
@@ -305,7 +308,7 @@
  .pages .page input.text {
 	 background: #f6f7f9;
 	 border: none;
-	 border-radius: 4px;
+	 /*border-radius: 4px;*/
 	 width: 100%;
 	 height: 40px;
 	 line-height: 40px;
@@ -314,7 +317,7 @@
 	 outline: none;
 }
  .pages .page input[type=submit] {
-     background: rgba(0, 0, 0, 0.5);
+     background: #00725f;
      outline: none;;
 	 color: #f6f7f9;
 	 height: 40px;
