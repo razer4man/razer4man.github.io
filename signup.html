@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Cormorant|Montserrat+Alternates&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <title>Sign Up|BOB finance app</title>
+</head>
+<body>
+    <script src = 'menu.js'></script>
+    <div id="login_div" class="main-div">
+        <h3>Создать аккаунт</h3>
+        <div class="input">
+            <div class="title">Имя пользователя</div>
+            <input type="email" id="signup_email_field">
+        </div>
+        <div class="input">
+            <div class="title">Пароль</div>
+            <input type="password" id="signup_password_field">
+        </div>
+
+        <button onclick="signup()">Создать аккаунт</button>
+    </div>
+
+    <div id="user_div" class="loggedin-div">
+        <h3>Welcome User</h3>
+        <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTX3kDc3s786L-twUxZ-YwlAbFnEbXic8",
+            authDomain: "d-finance-97648.firebaseapp.com",
+            databaseURL: "https://d-finance-97648.firebaseio.com",
+            projectId: "d-finance-97648",
+            storageBucket: "d-finance-97648.appspot.com",
+            messagingSenderId: "1081816026519",
+            appId: "1:1081816026519:web:b4a59d0d3e84e45049c8d2",
+            measurementId: "G-RREZF9T7NZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

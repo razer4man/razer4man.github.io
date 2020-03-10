@@ -32,6 +32,20 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+function signup() {
+  let signupUserEmail = document.getElementById("signup_email_field").value;
+  let signupUserPass = document.getElementById("signup_password_field").value;
+
+  firebase.auth().createUserWithEmailAndPassword(signupUserEmail, signupUserPass).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    window.alert(`Error  ${errorCode}: ` + errorMessage)
+    // ...
+  });
+}
+
 function login(){
 
   let userEmail = document.getElementById("email_field").value;
@@ -42,7 +56,7 @@ function login(){
     let errorCode = error.code;
     let errorMessage = error.message;
 
-    window.alert("Error : " + errorMessage);
+    window.alert(`Error  ${errorCode}: ` + errorMessage);
 
     // ...
   });

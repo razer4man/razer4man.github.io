@@ -12,6 +12,7 @@
 <body>
   <script src = 'menu.js'></script>
   <div id="login_div" class="main-div">
+    <h3>Вход</h3>
     <div class="input">
       <div class="title">Имя пользователя</div>
       <input type="email" id="email_field">
@@ -22,14 +23,16 @@
     </div>
 
     <button onclick="login()">Вход</button>
+    <p>
+      <a href="signup.html"><small>Создать аккаунт</small></a>
+    </p>
   </div>
 
-   <div id="user_div" class="loggedin-div">
+  <div id="user_div" class="loggedin-div">
     <h3>Welcome User</h3>
     <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
     <button onclick="logout()">Logout</button>
   </div>
-
 
 
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
@@ -49,6 +52,5 @@
     firebase.initializeApp(firebaseConfig);
   </script>
   <script src="index.js"></script>
-
 </body>
 </html>
